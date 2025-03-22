@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块 - 经典游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 主菜单界面 -->
+        <div id="main-menu" class="screen active">
+            <div class="game-title">
+                <h1>俄罗斯方块</h1>
+                <div class="subtitle">经典游戏重现</div>
+            </div>
+            <div class="menu-buttons">
+                <button id="start-game" class="btn primary-btn">开始游戏</button>
+                <button id="settings-btn" class="btn">设置</button>
+                <button id="help-btn" class="btn">游戏帮助</button>
+                <button id="leaderboard-btn" class="btn">排行榜</button>
+            </div>
+        </div>
+
+        <!-- 游戏界面 -->
+        <div id="game-screen" class="screen">
+            <div class="game-container">
+                <div class="game-area">
+                    <canvas id="game-canvas"></canvas>
+                </div>
+                <div class="game-info">
+                    <div class="next-piece">
+                        <h3>下一个方块</h3>
+                        <canvas id="next-piece-canvas"></canvas>
+                    </div>
+                    <div class="score-info">
+                        <div class="score">
+                            <h3>分数</h3>
+                            <div id="score-value">0</div>
+                        </div>
+                        <div class="level">
+                            <h3>等级</h3>
+                            <div id="level-value">1</div>
+                        </div>
+                        <div class="lines">
+                            <h3>已消除行数</h3>
+                            <div id="lines-value">0</div>
+                        </div>
+                    </div>
+                    <div class="game-controls">
+                        <button id="pause-btn" class="btn control-btn"><i class="fas fa-pause"></i> 暂停</button>
+                        <button id="restart-btn" class="btn control-btn"><i class="fas fa-redo"></i> 重新开始</button>
+                        <button id="menu-btn" class="btn control-btn"><i class="fas fa-home"></i> 主菜单</button>
+                    </div>
+                    <div class="mobile-controls">
+                        <div class="direction-controls">
+                            <button id="left-btn" class="control-btn"><i class="fas fa-arrow-left"></i></button>
+                            <button id="down-btn" class="control-btn"><i class="fas fa-arrow-down"></i></button>
+                            <button id="right-btn" class="control-btn"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                        <div class="action-controls">
+                            <button id="rotate-btn" class="control-btn"><i class="fas fa-redo"></i></button>
+                            <button id="drop-btn" class="control-btn"><i class="fas fa-angle-double-down"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏结束界面 -->
+        <div id="game-over" class="screen">
+            <div class="game-over-content">
+                <h2>游戏结束</h2>
+                <div class="final-score">
+                    <h3>最终得分</h3>
+                    <div id="final-score-value">0</div>
+                </div>
+                <div class="game-over-buttons">
+                    <button id="play-again-btn" class="btn primary-btn">再玩一次</button>
+                    <button id="back-to-menu-btn" class="btn">返回主菜单</button>
+                    <button id="share-score-btn" class="btn"><i class="fas fa-share-alt"></i> 分享成绩</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设置界面 -->
+        <div id="settings-screen" class="screen">
+            <div class="settings-content">
+                <h2>游戏设置</h2>
+                <div class="settings-options">
+                    <div class="setting-item">
+                        <label for="difficulty">游戏难度</label>
+                        <select id="difficulty">
+                            <option value="easy">简单</option>
+                            <option value="medium" selected>中等</option>
+                            <option value="hard">困难</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="sound-toggle">音效</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="sound-toggle" checked>
+                            <span class="slider"></span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="music-toggle">背景音乐</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="music-toggle" checked>
+                            <span class="slider"></span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="theme">主题</label>
+                        <select id="theme">
+                            <option value="classic" selected>经典</option>
+                            <option value="dark">暗黑</option>
+                            <option value="neon">霓虹</option>
+                            <option value="candy">糖果</option>
+                            <option value="nature">自然</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="game-bg">游戏区域背景</label>
+                        <select id="game-bg">
+                            <option value="white" selected>纯白</option>
+                            <option value="light-gray">浅灰</option>
+                            <option value="light-blue">淡蓝</option>
+                            <option value="light-yellow">淡黄</option>
+                            <option value="light-green">淡绿</option>
+                            <option value="light-pink">淡粉</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="block-style">方块颜色风格</label>
+                        <select id="block-style">
+                            <option value="classic" selected>经典亮色</option>
+                            <option value="neon">霓虹发光</option>
+                            <option value="pastel">柔和色调</option>
+                            <option value="contrast">高对比度</option>
+                            <option value="monochrome">单色渐变</option>
+                            <option value="red">红色系列</option>
+                            <option value="blue">蓝色系列</option>
+                            <option value="green">绿色系列</option>
+                            <option value="rainbow">彩虹色系</option>
+                            <option value="metallic">金属质感</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="save-settings" class="btn primary-btn">保存设置</button>
+                <button id="back-from-settings" class="btn">返回</button>
+            </div>
+        </div>
+
+        <!-- 帮助界面 -->
+        <div id="help-screen" class="screen">
+            <div class="help-content">
+                <h2>游戏帮助</h2>
+                <div class="help-info">
+                    <h3>游戏规则</h3>
+                    <p>俄罗斯方块是一款经典的方块消除游戏。方块会从屏幕顶部落下，玩家需要旋转和移动方块，使其填满一整行。当一行被填满时，该行会被消除，玩家获得分数。游戏会随着时间推移逐渐加快，直到方块堆到屏幕顶部，游戏结束。</p>
+                    
+                    <h3>操作方式</h3>
+                    <div class="controls-info">
+                        <div class="control-item">
+                            <div class="key">←</div>
+                            <div class="action">向左移动方块</div>
+                        </div>
+                        <div class="control-item">
+                            <div class="key">→</div>
+                            <div class="action">向右移动方块</div>
+                        </div>
+                        <div class="control-item">
+                            <div class="key">↓</div>
+                            <div class="action">加速下落</div>
+                        </div>
+                        <div class="control-item">
+                            <div class="key">↑</div>
+                            <div class="action">旋转方块</div>
+                        </div>
+                        <div class="control-item">
+                            <div class="key">空格</div>
+                            <div class="action">快速下落到底部</div>
+                        </div>
+                        <div class="control-item">
+                            <div class="key">P</div>
+                            <div class="action">暂停/继续游戏</div>
+                        </div>
+                    </div>
+                </div>
+                <button id="back-from-help" class="btn">返回</button>
+            </div>
+        </div>
+
+        <!-- 排行榜界面 -->
+        <div id="leaderboard-screen" class="screen">
+            <div class="leaderboard-content">
+                <h2>排行榜</h2>
+                <div class="leaderboard-list">
+                    <div class="leaderboard-header">
+                        <div class="rank">排名</div>
+                        <div class="player-name">玩家</div>
+                        <div class="player-score">分数</div>
+                    </div>
+                    <div id="leaderboard-entries">
+                        <!-- 排行榜条目将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                <button id="back-from-leaderboard" class="btn">返回</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频资源 -->
+    <audio id="move-sound" src="sounds/move.mp3" preload="auto"></audio>
+    <audio id="rotate-sound" src="sounds/rotate.mp3" preload="auto"></audio>
+    <audio id="drop-sound" src="sounds/drop.mp3" preload="auto"></audio>
+    <audio id="clear-sound" src="sounds/clear.mp3" preload="auto"></audio>
+    <audio id="game-over-sound" src="sounds/game-over.mp3" preload="auto"></audio>
+    <audio id="background-music" src="sounds/background.mp3" preload="auto" loop></audio>
+
+    <!-- JavaScript文件 -->
+    <script src="js/constants.js"></script>
+    <script src="js/tetrominos.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
