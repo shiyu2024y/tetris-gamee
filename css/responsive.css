@@ -1,0 +1,166 @@
+/* 响应式设计 */
+
+/* 平板设备 */
+@media (max-width: 992px) {
+    :root {
+        --block-size: 25px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .game-title h1 {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .game-container {
+        gap: 15px;
+    }
+    
+    .game-info {
+        width: 220px;
+    }
+    
+    .score-info div[id$="-value"] {
+        font-size: 20px;
+    }
+    
+    .help-content, .settings-content, .leaderboard-content, .game-over-content {
+        padding: 20px;
+    }
+}
+
+/* 手机设备 */
+@media (max-width: 768px) {
+    :root {
+        --block-size: 20px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .game-title h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .menu-buttons .btn {
+        width: 180px;
+        font-size: 16px;
+    }
+    
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .game-info {
+        width: var(--game-width);
+    }
+    
+    .next-piece, .score-info {
+        padding: 8px;
+    }
+    
+    .next-piece h3, .score-info h3 {
+        font-size: 16px;
+    }
+    
+    #next-piece-canvas {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .score-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .score-info div[id$="-value"] {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+    
+    .game-controls {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .game-controls .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .mobile-controls {
+        display: block;
+    }
+    
+    .help-content, .settings-content, .leaderboard-content, .game-over-content {
+        padding: 15px;
+    }
+    
+    .help-content h2, .settings-content h2, .leaderboard-content h2, .game-over-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .controls-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 小型手机设备 */
+@media (max-width: 480px) {
+    :root {
+        --block-size: 16px;
+    }
+    
+    .game-title h1 {
+        font-size: 2rem;
+    }
+    
+    .menu-buttons .btn {
+        width: 160px;
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    
+    .game-controls .btn {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    .mobile-controls .control-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .final-score h3 {
+        font-size: 1.2rem;
+    }
+    
+    #final-score-value {
+        font-size: 2.5rem;
+    }
+    
+    .leaderboard-header, .leaderboard-entry {
+        grid-template-columns: 0.8fr 1.2fr 1fr;
+        font-size: 14px;
+    }
+} 

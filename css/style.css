@@ -1,0 +1,639 @@
+/* 全局样式 */
+:root {
+    /* 主题颜色 - 经典主题 */
+    --primary-color: #4a90e2;
+    --secondary-color: #82b1ff;
+    --background-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --border-color: #b0bec5;
+    --game-bg-color: #ffffff;
+    --grid-color: #e0e0e0;
+    
+    /* 方块颜色风格 - 经典亮色 */
+    --block-style-classic-i: #00bcd4;
+    --block-style-classic-j: #2196f3;
+    --block-style-classic-l: #ff9800;
+    --block-style-classic-o: #ffd600;
+    --block-style-classic-s: #4caf50;
+    --block-style-classic-t: #9c27b0;
+    --block-style-classic-z: #f44336;
+    
+    /* 方块颜色风格 - 霓虹发光 */
+    --block-style-neon-i: #00ffff;
+    --block-style-neon-j: #0088ff;
+    --block-style-neon-l: #ff9500;
+    --block-style-neon-o: #ffff00;
+    --block-style-neon-s: #00ff44;
+    --block-style-neon-t: #ff00ff;
+    --block-style-neon-z: #ff0033;
+    
+    /* 方块颜色风格 - 柔和色调 */
+    --block-style-pastel-i: #80deea;
+    --block-style-pastel-j: #90caf9;
+    --block-style-pastel-l: #ffcc80;
+    --block-style-pastel-o: #fff59d;
+    --block-style-pastel-s: #a5d6a7;
+    --block-style-pastel-t: #ce93d8;
+    --block-style-pastel-z: #ef9a9a;
+    
+    /* 方块颜色风格 - 高对比度 */
+    --block-style-contrast-i: #006064;
+    --block-style-contrast-j: #0d47a1;
+    --block-style-contrast-l: #e65100;
+    --block-style-contrast-o: #ffd600;
+    --block-style-contrast-s: #1b5e20;
+    --block-style-contrast-t: #4a148c;
+    --block-style-contrast-z: #b71c1c;
+    
+    /* 方块颜色风格 - 单色渐变 */
+    --block-style-monochrome-i: #37474f;
+    --block-style-monochrome-j: #455a64;
+    --block-style-monochrome-l: #546e7a;
+    --block-style-monochrome-o: #607d8b;
+    --block-style-monochrome-s: #78909c;
+    --block-style-monochrome-t: #90a4ae;
+    --block-style-monochrome-z: #b0bec5;
+    
+    /* 方块颜色风格 - 全红色系 */
+    --block-style-red-i: #ff3333;
+    --block-style-red-j: #cc0000;
+    --block-style-red-l: #ff6666;
+    --block-style-red-o: #ff9999;
+    --block-style-red-s: #b30000;
+    --block-style-red-t: #ff0000;
+    --block-style-red-z: #e60000;
+    
+    /* 方块颜色风格 - 全蓝色系 */
+    --block-style-blue-i: #3333ff;
+    --block-style-blue-j: #0000cc;
+    --block-style-blue-l: #6666ff;
+    --block-style-blue-o: #9999ff;
+    --block-style-blue-s: #0000b3;
+    --block-style-blue-t: #0000ff;
+    --block-style-blue-z: #0000e6;
+    
+    /* 方块颜色风格 - 全绿色系 */
+    --block-style-green-i: #33ff33;
+    --block-style-green-j: #00cc00;
+    --block-style-green-l: #66ff66;
+    --block-style-green-o: #99ff99;
+    --block-style-green-s: #00b300;
+    --block-style-green-t: #00ff00;
+    --block-style-green-z: #00e600;
+    
+    /* 方块颜色风格 - 彩虹色 */
+    --block-style-rainbow-i: #ff0000; /* 红 */
+    --block-style-rainbow-j: #ff9900; /* 橙 */
+    --block-style-rainbow-l: #ffff00; /* 黄 */
+    --block-style-rainbow-o: #00ff00; /* 绿 */
+    --block-style-rainbow-s: #0099ff; /* 蓝 */
+    --block-style-rainbow-t: #6633ff; /* 紫 */
+    --block-style-rainbow-z: #ff66ff; /* 粉 */
+    
+    /* 方块颜色风格 - 金属质感 */
+    --block-style-metallic-i: #a0a0a0;
+    --block-style-metallic-j: #808080;
+    --block-style-metallic-l: #c0c0c0;
+    --block-style-metallic-o: #d8d8d8;
+    --block-style-metallic-s: #707070;
+    --block-style-metallic-t: #989898;
+    --block-style-metallic-z: #888888;
+    
+    /* 方块边框和高光 */
+    --block-border: rgba(0, 0, 0, 0.2);
+    --block-highlight: rgba(255, 255, 255, 0.4);
+    
+    /* 尺寸 */
+    --block-size: 30px;
+    --game-width: calc(var(--block-size) * 10);
+    --game-height: calc(var(--block-size) * 20);
+    
+    /* 游戏区域背景颜色 */
+    --game-bg-white: #ffffff;
+    --game-bg-light-gray: #f5f5f5;
+    --game-bg-light-blue: #e3f2fd;
+    --game-bg-light-yellow: #fff8e1;
+    --game-bg-light-green: #e8f5e9;
+    --game-bg-light-pink: #fce4ec;
+    
+    /* 当前选择的游戏背景色 */
+    --current-game-bg: var(--game-bg-white);
+    
+    /* 当前选择的方块颜色风格 */
+    --i-block-color: var(--block-style-classic-i);
+    --j-block-color: var(--block-style-classic-j);
+    --l-block-color: var(--block-style-classic-l);
+    --o-block-color: var(--block-style-classic-o);
+    --s-block-color: var(--block-style-classic-s);
+    --t-block-color: var(--block-style-classic-t);
+    --z-block-color: var(--block-style-classic-z);
+}
+
+/* 暗黑主题 */
+[data-theme="dark"] {
+    --primary-color: #64b5f6;
+    --secondary-color: #90caf9;
+    --background-color: #37474f;
+    --text-color: #eceff1;
+    --border-color: #546e7a;
+    --game-bg-color: #263238;
+    --grid-color: #455a64;
+    
+    /* 不再直接定义方块颜色 */
+    --block-border: rgba(0, 0, 0, 0.3);
+    --block-highlight: rgba(255, 255, 255, 0.5);
+}
+
+/* 霓虹主题 */
+[data-theme="neon"] {
+    --primary-color: #ff00ff;
+    --secondary-color: #00ffff;
+    --background-color: #000;
+    --text-color: #fff;
+    --border-color: #00ff00;
+    --game-bg-color: #000;
+    --grid-color: #222;
+    
+    /* 不再直接定义方块颜色 */
+    --block-border: rgba(0, 0, 0, 0.7);
+    --block-highlight: rgba(255, 255, 255, 0.6);
+}
+
+/* 新增糖果主题 */
+[data-theme="candy"] {
+    --primary-color: #ff4081;
+    --secondary-color: #7c4dff;
+    --background-color: #f8bbd0;
+    --text-color: #6a1b9a;
+    --border-color: #ff80ab;
+    --game-bg-color: #f3e5f5;
+    --grid-color: #e1bee7;
+    
+    /* 不再直接定义方块颜色 */
+    --block-border: rgba(0, 0, 0, 0.2);
+    --block-highlight: rgba(255, 255, 255, 0.5);
+}
+
+/* 新增自然主题 */
+[data-theme="nature"] {
+    --primary-color: #43a047;
+    --secondary-color: #795548;
+    --background-color: #e8f5e9;
+    --text-color: #33691e;
+    --border-color: #a5d6a7;
+    --game-bg-color: #dcedc8;
+    --grid-color: #c5e1a5;
+    
+    /* 不再直接定义方块颜色 */
+    --block-border: rgba(0, 0, 0, 0.2);
+    --block-highlight: rgba(255, 255, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin: 5px;
+    outline: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.control-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+/* 屏幕样式 */
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* 主菜单样式 */
+#main-menu {
+    text-align: center;
+}
+
+.game-title {
+    margin-bottom: 50px;
+}
+
+.game-title h1 {
+    font-size: 4rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-buttons .btn {
+    width: 200px;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* 游戏界面样式 */
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.game-area {
+    background-color: var(--current-game-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    width: var(--game-width);
+    height: var(--game-height);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.game-info {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.next-piece {
+    background-color: var(--current-game-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.next-piece h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+#next-piece-canvas {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.score-info {
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-info h3 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.score-info div[id$="-value"] {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-controls {
+    display: none;
+    margin-top: 20px;
+}
+
+.direction-controls, .action-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.mobile-controls .control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 0;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 游戏结束界面样式 */
+.game-over-content {
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-over-content h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.final-score {
+    margin-bottom: 30px;
+}
+
+.final-score h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#final-score-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.game-over-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 设置界面样式 */
+.settings-content {
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.settings-content h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.settings-options {
+    margin-bottom: 30px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.setting-item label {
+    font-size: 18px;
+}
+
+.setting-item select {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+/* 开关样式 */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* 帮助界面样式 */
+.help-content {
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.help-content h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.help-info {
+    margin-bottom: 30px;
+}
+
+.help-info h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+}
+
+.help-info p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.controls-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.key {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+}
+
+/* 排行榜界面样式 */
+.leaderboard-content {
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-content h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.leaderboard-list {
+    margin-bottom: 30px;
+}
+
+.leaderboard-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.leaderboard-entry {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.leaderboard-entry:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.leaderboard-entry:last-child {
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+
+.rank {
+    font-weight: bold;
+}
+
+.player-score {
+    font-weight: bold;
+    color: var(--primary-color);
+} 
